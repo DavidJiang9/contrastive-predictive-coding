@@ -60,7 +60,7 @@ def load_model(args, reload_model=False):
 
     model = torch.nn.DataParallel(model)
     model = model.to(args.device)
-    args.batch_size = args.batch_size * args.num_gpu
+    args.batch_size = args.batch_size * max(1, args.num_gpu)
     return model, optimizer
 
 
