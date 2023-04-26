@@ -60,7 +60,7 @@ def validate_speakers(args, dataset, model, optimizer, epoch, step, global_step,
     figure = plot_tsne(args, embedding, labels, epoch, step)
 
     # add to TensorBoard
-    writer.add_embedding(features, metadata=labels, global_step=global_step)
+    # writer.add_embedding(features, metadata=labels, global_step=global_step)
     writer.add_figure("TSNE", figure, global_step=global_step)
     writer.flush()
 

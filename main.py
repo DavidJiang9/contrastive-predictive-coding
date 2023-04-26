@@ -6,7 +6,7 @@ import numpy as np
 from datetime import datetime
 
 # Apex for mixed-precision training
-from apex import amp
+# from apex import amp
 
 
 # TensorBoard
@@ -91,22 +91,22 @@ def train(args, model, optimizer, writer):
         ex.log_scalar("loss.train", avg_loss, epoch)
 
         conv = 0
-        for idx, layer in enumerate(model.module.model.modules()):
-            if isinstance(layer, torch.nn.Conv1d):
-                writer.add_histogram(
-                    "Conv/weights-{}".format(conv),
-                    layer.weight,
-                    global_step=global_step,
-                )
-                conv += 1
+        # for idx, layer in enumerate(model.module.model.modules()):
+        #     if isinstance(layer, torch.nn.Conv1d):
+        #         writer.add_histogram(
+        #             "Conv/weights-{}".format(conv),
+        #             layer.weight,
+        #             global_step=global_step,
+        #         )
+        #         conv += 1
 
-            if isinstance(layer, torch.nn.GRU):
-                writer.add_histogram(
-                    "GRU/weight_ih_l0", layer.weight_ih_l0, global_step=global_step
-                )
-                writer.add_histogram(
-                    "GRU/weight_hh_l0", layer.weight_hh_l0, global_step=global_step
-                )
+        #     if isinstance(layer, torch.nn.GRU):
+        #         writer.add_histogram(
+        #             "GRU/weight_ih_l0", layer.weight_ih_l0, global_step=global_step
+        #         )
+        #         writer.add_histogram(
+        #             "GRU/weight_hh_l0", layer.weight_hh_l0, global_step=global_step
+        #         )
 
         if avg_loss > best_loss:
             best_loss = avg_loss

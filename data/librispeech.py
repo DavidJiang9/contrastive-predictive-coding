@@ -7,7 +7,7 @@ from collections import defaultdict
 
 
 def default_loader(path):
-    return torchaudio.load(path, normalization=False)
+    return torchaudio.load(path)
 
 
 def default_flist_reader(flist):
