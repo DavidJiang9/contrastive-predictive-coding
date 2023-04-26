@@ -85,7 +85,7 @@ class InfoNCE(nn.Module):
         z = self.broadcast_batch_length(z)
         z_neg = torch.stack(
             [
-                torch.index_select(z, 0, torch.randperm(z.size(0)).to(z.get_device()))
+                torch.index_select(z, 0, torch.randperm(z.size(0)).to(z.get_device() if self.args.device=='gpu' else 'cpu'))
                 for i in range(self.negative_samples)
             ],
             2,

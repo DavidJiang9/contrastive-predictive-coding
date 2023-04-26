@@ -34,7 +34,7 @@ def validate_speakers(args, dataset, model, optimizer, epoch, step, global_step,
         # DataParallel wraps model in module
         model = model.module.model
         latent_rep_size, latent_rep_len = model.get_latent_size(input_size) #L,C
-        print(latent_rep_size, latent_rep_len)
+        print('test',latent_rep_size, latent_rep_len)
         features = torch.zeros(
             max_speakers, batch_size, latent_rep_size * latent_rep_len
         ).to(args.device)
