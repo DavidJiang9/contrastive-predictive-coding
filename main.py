@@ -32,7 +32,7 @@ def train(args, model, optimizer, writer):
     print_idx = 100
 
     # at which step to validate training
-    validation_idx = 1000
+    validation_idx = 5
 
     best_loss = 0
 
